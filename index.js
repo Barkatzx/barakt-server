@@ -1,6 +1,6 @@
 const express = require('express');
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const cors = require('cors');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const app = express();
@@ -51,9 +51,8 @@ const client = new MongoClient(uri, {
       res.send(result);
   })
 
-  // Project Details
 
-  
+  // Project Details
   app.get('/project', async (req, res) => {
     const cursor = projectCollection.find();
     const result = await cursor.toArray();
