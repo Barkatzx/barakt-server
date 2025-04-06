@@ -37,17 +37,17 @@ function validateBasicAuth(req, res, next) {
 
 async function run() {
   try {
-    const projectCollection = client.db('BarkatDB').collection('projects');
+    const projectCollection = client.db('BarkatDB').collection('project');
 
     // GET all projects
-    app.get('/projects', async (req, res) => {
+    app.get('/project', async (req, res) => {
       const cursor = projectCollection.find();
       const result = await cursor.toArray();
       res.send(result);
     });
 
     // GET a project by ID
-    app.get('/projects/:id', async (req, res) => {
+    app.get('/project/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await projectCollection.findOne(query);
